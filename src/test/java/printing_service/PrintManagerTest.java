@@ -171,4 +171,22 @@ public class PrintManagerTest {
 
         Assertions.assertEquals(totalPrintingCapacity, actual);
     }
+
+    @Test
+    public void testCanBePrinted(){
+        PrintManager pm = new PrintManager();
+        boolean res = pm.canPrint(new Document(1, 1, 99), new Printer(1, 100));
+        Assertions.assertTrue(res);
+    }
+
+    @Test
+    public void testNextToBePrinted(){
+
+        Document chosen = new Document(14, 1, 200);
+        Document notChosen = new Document(40, 2, 5);
+
+        PrintManager pm = new PrintManager();
+        Document doc = pm.nextToBePrinted(Arrays.asList(chosen, notChosen));
+        Assertions.assertEquals(chosen, doc);
+    }
 }

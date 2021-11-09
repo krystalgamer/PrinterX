@@ -94,4 +94,18 @@ public class PrintManager {
 
         return Collections.emptyList();
     }
+
+    public boolean canPrint(Document doc, Printer printer){
+        return doc.getNumPages() <= printer.getCapacity();
+    }
+
+    public Document nextToBePrinted(List<Document> documents){
+
+        if(documents.size() == 0)
+            return null;
+
+        sortDocumentsByPriority(documents);
+        return documents.get(0);
+    }
+
 }
