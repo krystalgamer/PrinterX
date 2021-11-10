@@ -189,4 +189,12 @@ public class PrintManagerTest {
         Document doc = pm.nextToBePrinted(Arrays.asList(chosen, notChosen));
         Assertions.assertEquals(chosen, doc);
     }
+
+    @Test
+    public void testNextToBePrinted_noDocs(){
+
+        PrintManager pm = new PrintManager();
+        Document doc = pm.nextToBePrinted(Arrays.asList());
+        Assertions.assertEquals(null, doc);
+    }
 }
